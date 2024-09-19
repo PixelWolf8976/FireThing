@@ -7,15 +7,15 @@ var deleteRiseSpeed := 1000.0
 var delay := 0.5
 var previousFire
 
-var jitterAmount := 1.0
-var jitterSpeed = clamp(0.1 * layerNum, 0, jitterAmount)
+var jitterAmount := 100.0 * (10 - layerNum) * 0.001
+var jitterSpeed = clamp(layerNum * 2.0, 0, jitterAmount)
 var jitter := 0.0
 var deleting := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	modulate = Color.BLUE
 	position = get_global_mouse_position()
+	scale = Vector2((10 - layerNum) * 0.1, (10 - layerNum) * 0.1)
 	var originalShaderMaterial = material
 	if originalShaderMaterial is ShaderMaterial:
 		var shaderMaterial = originalShaderMaterial.duplicate()
@@ -31,7 +31,7 @@ func _process(delta):
 			var distToTarget = (previousFire.position - position)
 			jitter += randf_range(-jitterSpeed, jitterSpeed)
 			jitter = clamp(jitter, -jitterAmount, jitterAmount)
-			var target = (distToTarget / 5) + position + Vector2(0, -5) + Vector2(jitter, jitter)
+			var target = lerp(position, previousFire.position + Vector2(0, (10 - layerNum) * 0.1 * -25) + Vector2(jitter, 0), delta * 25)
 			position = target
 		else:
 			position = get_global_mouse_position()

@@ -1,0 +1,14 @@
+[gd_scene load_steps=5 format=3 uid="uid://blpqcow8rd2aq"]
+
+[ext_resource type="Texture2D" uid="uid://dyfem1d2tiqoh" path="res://Fire Circle.png" id="1_gmlpx"]
+[ext_resource type="Shader" path="res://fire_piece.gdshader" id="1_rrys5"]
+[ext_resource type="Script" path="res://FirePieceScript.gd" id="2_r0fj2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rr1yl"]
+shader = ExtResource("1_rrys5")
+shader_parameter/layer_num = 0.0
+
+[node name="FirePiece" type="Sprite2D"]
+material = SubResource("ShaderMaterial_rr1yl")
+texture = ExtResource("1_gmlpx")
+script = ExtResource("2_r0fj2")

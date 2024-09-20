@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgqkxtin6laat"]
+[gd_scene load_steps=5 format=3 uid="uid://bgqkxtin6laat"]
 
 [ext_resource type="Script" path="res://node_2d.gd" id="1_03f4t"]
+[ext_resource type="AudioStream" uid="uid://bh7pouslqt0kf" path="res://Extinguish.mp3" id="2_fha4v"]
+[ext_resource type="AudioStream" uid="uid://bqseqmksoqw64" path="res://FireStart.mp3" id="3_cyxs5"]
+[ext_resource type="Texture2D" uid="uid://2x7f0d3xl3ga" path="res://Match.png" id="4_7rrsj"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_03f4t")
@@ -8,3 +11,22 @@ script = ExtResource("1_03f4t")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
+[node name="Extinguish" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_fha4v")
+max_polyphony = 100
+panning_strength = 5.0
+
+[node name="Ignite" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_cyxs5")
+volume_db = -5.0
+pitch_scale = 1.75
+max_polyphony = 100
+panning_strength = 5.0
+
+[node name="Match" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, 150)
+scale = Vector2(8, 8)
+texture = ExtResource("4_7rrsj")

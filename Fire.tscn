@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dswjvo42p22eq"]
+[gd_scene load_steps=3 format=3 uid="uid://dswjvo42p22eq"]
 
 [ext_resource type="Script" path="res://fire.gd" id="1_4mcy0"]
 [ext_resource type="AudioStream" uid="uid://hlu0l2ic3wsh" path="res://burningSound.mp3" id="2_c8gju"]
-[ext_resource type="AudioStream" uid="uid://bqseqmksoqw64" path="res://FireStart.mp3" id="3_gf1t2"]
-[ext_resource type="AudioStream" uid="uid://bh7pouslqt0kf" path="res://Extinguish.mp3" id="4_wk8g7"]
 
 [node name="Fire" type="Node2D"]
 script = ExtResource("1_4mcy0")
@@ -11,15 +9,5 @@ script = ExtResource("1_4mcy0")
 [node name="Burning" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_c8gju")
 autoplay = true
+panning_strength = 5.0
 parameters/looping = true
-
-[node name="Ignite" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_gf1t2")
-volume_db = -5.0
-pitch_scale = 1.75
-autoplay = true
-
-[node name="Extinguish" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_wk8g7")
-
-[connection signal="finished" from="Extinguish" to="." method="_on_extinguish_finished"]

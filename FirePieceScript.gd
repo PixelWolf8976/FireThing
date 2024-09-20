@@ -6,6 +6,7 @@ var deleteRiseSpeed := 1000.0
 
 var delay := 0.5
 var previousFire
+var fireSpeed := 40.0
 
 var jitterAmount := 100.0 * (10 - layerNum) * 0.001
 var jitterSpeed = clamp(layerNum * 2.0, 0, jitterAmount)
@@ -31,7 +32,7 @@ func _process(delta):
 			var distToTarget = (previousFire.position - position)
 			jitter += randf_range(-jitterSpeed, jitterSpeed)
 			jitter = clamp(jitter, -jitterAmount, jitterAmount)
-			var target = lerp(position, previousFire.position + Vector2(0, (10 - layerNum) * 0.1 * -25) + Vector2(jitter, 0), delta * 25)
+			var target = lerp(position, previousFire.position + Vector2(0, (10 - layerNum) * 0.1 * -25) + Vector2(jitter, 0), delta * fireSpeed)
 			position = target
 		else:
 			position = get_global_mouse_position()

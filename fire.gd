@@ -30,9 +30,8 @@ func delete():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if isDone:
-		if !$Extinguish.playing:
-			$Extinguish.play(0.03)
 		$Burning.stop()
+		queue_free()
 	
 	if deleting && fireList.size() > 0:
 		deletingAt += delta * deleteSpeed
@@ -41,6 +40,3 @@ func _process(delta):
 				fireList[i].queue_free()
 				if i == fireList.size() - 1:
 					isDone = true
-
-func _on_extinguish_finished():
-	queue_free()
